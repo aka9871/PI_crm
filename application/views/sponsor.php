@@ -5,6 +5,8 @@ $this->load->view('PI_crmNav');
 <div id="content">
 <?php 
 echo anchor('Sponsor/list_sponsor/',"sponsor list");
+echo " ********** ";
+echo anchor('Sponsor/register/',"Add sponsor");
 ?>
 
 

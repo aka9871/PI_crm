@@ -50,8 +50,25 @@ function update($id,$data){
 	}
 //////////////////////////////////////////////////////////////////////// 
 function create($data){
-
+      $this->db->where('nom',$data['nom']);
+      $q=$this->db->get('sponsor');
+     if($q->num_rows()==0)
+	{
+	$usertype='sponsor';
+	
+	
+	$this->db->set('username', $data['nom']);
+	$this->db->set('email', $data['email']);
+	$this->db->set('password',$data['password']);
+	$this->db->set('user_type',$usertype);
+	$this->db->insert('users');
 	$this->db->insert('sponsor',$data);
+	return true;
+	
+	} 
+	else return false;
+	
+	
 }
 
 
