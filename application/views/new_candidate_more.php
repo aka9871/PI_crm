@@ -17,6 +17,7 @@ echo "<br>";echo $row->schools;
 
 echo form_open('admin/update_new_candidate');
 $id=$row->id;
+$email=$row->email;
 ?>
 
 <label for="satut">Accepter</label>
@@ -24,6 +25,7 @@ $id=$row->id;
 <label for="satut">Refuser</label>
 <input type="radio" name="statut" value="3" <?php echo set_radio('refuse', '3'); ?> />
 <input type="hidden" name="id" value="<?php echo $id ?>" />
+<input type="hidden" name="email" value="<?php echo $email ?>" />
        
 
 <input type="submit", value="Update" />

@@ -71,9 +71,26 @@ function update_new_candidate(){
 			
 			$new_statut=$this->input->post('statut');
 			$id=$this->input->post('id');
+			$email=$this->input->post('email');
 	 		
 		        $this->candidate_model->update_candidate_statut($id,$new_statut);
-                        redirect('admin/list_new_candidate');
+		        if($new_statut==2)
+		          { $this->email->from('placement@pi.com', 'placement International');
+					$this->email->to('khedji.ali@gmail.com');// $this->email->to($email); 
+					//$this->email->cc('another@another-example.com'); 
+					//$this->email->bcc('them@their-example.com'); 
+
+					$this->email->subject('Profil Accepted');
+					$this->email->message('Your profil is accepeted');	
+
+					$this->email->send();
+
+					echo $this->email->print_debugger();
+				 }
+		        else  
+		        
+		        {echo "refused";}
+                        //redirect('admin/list_new_candidate');
 
 
 
