@@ -14,11 +14,19 @@ echo "<br>";echo $row->birth;
 echo "<br>";echo $row->email;
 echo "<br>";echo $row->phone;
 echo "<br>";echo $row->schools;
-echo form_open('admin/update_new_candidate');
-?>
-<input type="radio" name="accepte" value="1" <?php echo set_radio('accept', '1', TRUE); ?> />
-<input type="radio" name="refuse" value="2" <?php echo set_radio('refuse', '2'); ?> />
 
+echo form_open('admin/update_new_candidate');
+$id=$row->id;
+?>
+
+<label for="satut">Accepter</label>
+<input type="radio" name="statut" value="2" <?php echo set_radio('accept', '2', TRUE); ?> />
+<label for="satut">Refuser</label>
+<input type="radio" name="statut" value="3" <?php echo set_radio('refuse', '3'); ?> />
+<input type="hidden" name="id" value="<?php echo $id ?>" />
+       
+
+<input type="submit", value="Update" />
 
 <?php
 echo form_close(); } 

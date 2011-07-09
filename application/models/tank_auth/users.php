@@ -129,15 +129,35 @@ class Users extends CI_Model
 	{
 		$data['created'] = date('Y-m-d H:i:s');
 		$data['activated'] = $activated ? 1 : 0;
-        
+		
 		if ($this->db->insert($this->table_name, $data)) {
-		    //$this->db->set('user_type',$data['user_type']);
+
 			$user_id = $this->db->insert_id();
 			if ($activated)	$this->create_profile($user_id);
+
+		
 			return array('user_id' => $user_id);
 		}
 		return NULL;
 	}
+	
+	function create_sponsor($data)
+	{   $activated = TRUE;
+		$data['created'] = date('Y-m-d H:i:s');
+		$data['activated'] = $activated ? 1 : 0;
+		$data['user_type']='sponsor';
+		if ($this->db->insert($this->table_name, $data)) {
+
+			$user_id = $this->db->insert_id();
+			if ($activated)	$this->create_profile($user_id);
+
+		
+			return array('user_id' => $user_id);
+		}
+		return NULL;
+	}
+	
+	
 
 	/**
 	 * Activate user if activation key is valid.

@@ -24,43 +24,34 @@ class admin extends CI_Controller {
  
  function list_new_candidate() {
  
-    $config['base_url'] = 'http://localhost:8888/PI_crm/index.php/admin/list_new_candidate';
-	$config['total_rows'] = $this->sponsor_model->getNumCandidate();
+        $config['base_url'] = base_url() . '/index.php/admin/list_new_candidate';
+	$config['total_rows'] = $this->candidate_model->getNumCandidate();
 	$config['per_page'] = 2;
 	$config['uri_segment'] = 3;
 	$config['first_link'] = FALSE;
-    $config['last_link'] = FALSE;
-    $config['next_link'] = FALSE;
-    $config['prev_link'] = FALSE;
+        $config['last_link'] = FALSE;
+        $config['next_link'] = FALSE;
+        $config['prev_link'] = FALSE;
 	
 	$this->pagination->initialize($config);
 
 	$page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
-	$data['results'] = $this->sponsor_model->get_candidate($config['per_page'],$page);
+	$data['results'] = $this->candidate_model->get_candidate($config['per_page'],$page);
 	$data['links'] = $this->pagination->create_links();
            
 				$this->load->view('new_candidate_list',$data);
 				
-	   
-	  /*
- }
-	   else if($this->tank_auth->get_usertype()=='sponsor')
-	   {
-	    		$data['rows']=$this->sponsor_model->read();
-				$this->load->view('simple_sponsor_list',$data);
-	   }
-*/
- 
+	    
  
  }
- 
+ ////////// ////////// ////////// ////////// ////////// //////////
  function new_candidate_more() {
  
  if($this->uri->segment(3))
 			{
 			
 						
-			$data['row']=$this->candidate_model->get_candidate($this->uri->segment(3));
+			$data['row']=$this->candidate_model->get_candidate_simple($this->uri->segment(3));
 			$this->load->view('new_candidate_more',$data);
 			}
 						
@@ -72,12 +63,17 @@ class admin extends CI_Controller {
  
  }
  
-
+////////// ////////// ////////// ////////// ////////// //////////
 
 function update_new_candidate(){
 
 
-redirect('new_candidate_list');
+			
+			$new_statut=$this->input->post('statut');
+			$id=$this->input->post('id');
+	 		
+		        $this->candidate_model->update_candidate_statut($id,$new_statut);
+                        redirect('admin/list_new_candidate');
 
 
 

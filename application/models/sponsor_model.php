@@ -49,6 +49,7 @@ function update($id,$data){
 
 	}
 //////////////////////////////////////////////////////////////////////// 
+/*
 function create($data){
       $this->db->where('nom',$data['nom']);
       $q=$this->db->get('sponsor');
@@ -70,6 +71,7 @@ function create($data){
 	
 	
 }
+*/
 
 
 

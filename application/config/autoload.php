@@ -52,7 +52,7 @@ $autoload['packages'] = array(APPPATH.'third_party');
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('tank_auth', 'form_validation','session', 'database', 'tweet', 'facebook', 'lightopenid');
+$autoload['libraries'] = array('tank_auth', 'form_validation','session', 'database', 'tweet', 'facebook', 'lightopenid','pagination');
 
 /*
 | -------------------------------------------------------------------
@@ -108,7 +108,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('sponsor_model');
+$autoload['model'] = array('sponsor_model','candidate_model');
 
 
 /* End of file autoload.php */

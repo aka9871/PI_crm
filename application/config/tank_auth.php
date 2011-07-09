@@ -8,7 +8,7 @@
 |--------------------------------------------------------------------------
 */
 $config['website_name'] = 'Placement International';
-$config['webmaster_email'] = 'khedji.ali@gmail.com';
+$config['webmaster_email'] = 'khedji@gmail.com';
 
 /*
 |--------------------------------------------------------------------------
